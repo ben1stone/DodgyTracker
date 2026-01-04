@@ -1,0 +1,45 @@
+name: Publish Streak Pot
+
+on:
+  workflow_dispatch:
+    inputs:
+      day:
+        description: 'Current day number (integer)'
+        required: true
+        type: number
+      pot:
+        description: 'Current pot size in GBP (integer)'
+        required: true
+        type: number
+      totalDays:
+        description: 'Total days in streak (default 365)'
+        required: false
+        type: number
+        default: 365
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate index.html
+        run: node scripts/build.js ${{ inputs.day }} ${{ inputs.pot }} ${{ inputs.totalDays }}
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --staged --quiet || git commit -m "Update streak pot: Day ${{ inputs.day }}, Pot £${{ inputs.pot }}"
+          git push
