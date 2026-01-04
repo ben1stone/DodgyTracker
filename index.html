@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DodgyTracker</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.6;
+      color: #222;
+      background: #fafafa;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .profile-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ddd;
+    }
+    .profile-info h1 { color: #1a1a1a; margin: 0 0 0.25rem 0; font-size: 1.5rem; }
+    .profile-day { font-size: 0.9rem; color: #666; margin-bottom: 0.5rem; }
+    .profile-pot-label { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
+    .profile-pot { font-size: 1.75rem; font-weight: 700; color: #1a1a1a; }
+    .stat {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .stat summary {
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+      color: #666;
+      list-style: none;
+    }
+    .stat summary::-webkit-details-marker { display: none; }
+    .stat summary::after {
+      content: 'Tap to reveal';
+      float: right;
+      font-size: 0.75rem;
+      color: #999;
+    }
+    .stat[open] summary::after { content: ''; }
+    .stat-value {
+      padding: 0 1.25rem 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      word-break: break-all;
+      overflow-wrap: break-word;
+    }
+    .success { color: #16a34a; }
+    .fail { color: #dc2626; }
+    footer { 
+      position: fixed;
+      bottom: 1rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile">
+    <img src="pic.png" alt="Profile" class="profile-photo">
+    <div class="profile-info">
+      <h1>DodgyTracker</h1>
+      <div class="profile-day">Day 4 / 365</div>
+      <div class="profile-pot-label">Current Pot</div>
+      <div class="profile-pot">£40</div>
+    </div>
+  </div>
+  
+  <details class="stat">
+    <summary>When I show up every remaining day</summary>
+    <div class="stat-value success">£3,650</div>
+  </details>
+  
+  <details class="stat">
+    <summary>If I fail every remaining day</summary>
+    <div class="stat-value fail">£187,883,406,621,906,658,231,158,447,743,146,962,190,054,603,912,665,589,656,583,277,722,576,722,009,168,675,477,095,919,870,781,496,242,554,798,080</div>
+  </details>
+  
+  <footer>Last updated: 2026-01-04 21:52:01 UTC</footer>
+</body>
+</html>
